@@ -1,12 +1,9 @@
 package ua.edu.cbs.lms.hometask_jdbc_1.errorshandler;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class MyJoinsDBWorker {
-    private final String url = "localhost:3306";
+    private final String url = "jdbc:mysql://localhost:3306/myjoinsdb";
     private final String login = "root";
     private final String password = "Q11w22e33";
 
@@ -48,7 +45,53 @@ public class MyJoinsDBWorker {
             PreparedStatement preparedStatement = connection.prepareStatement(selectContactData)){
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            System.out.println("Result:");
+            System.out.println("Result All Employee:");
+
+            while(resultSet.next()){
+                String first_name = resultSet.getString("first_name");
+                String last_name = resultSet.getString("last_name");
+                String phone_number = resultSet.getString("phone_number");
+                String home_address = resultSet.getString("home_address");
+
+                System.out.println(first_name + " " + last_name + "; " + phone_number  + "; " + home_address);
+            }
+
+
+        }catch (Exception error){
+            ErrorsHandler.errorHandler(error);
+        }
+
+    }
+
+    public void showNoMarriageEmployee(){
+        try(Connection connection = DriverManager.getConnection(url,login,password);
+            PreparedStatement preparedStatement = connection.prepareStatement(selectContactData)){
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            System.out.println("Result Employees is No Marriage:");
+
+            while(resultSet.next()){
+                String first_name = resultSet.getString("first_name");
+                String last_name = resultSet.getString("last_name");
+                String phone_number = resultSet.getString("phone_number");
+                Date date_of_birthd = resultSet.getDate("date_of_birthd");
+
+                System.out.println(first_name + " " + last_name + "; " + phone_number  + "; " + date_of_birthd);
+            }
+
+
+        }catch (Exception error){
+            ErrorsHandler.errorHandler(error);
+        }
+
+    }
+
+    public void showEmployeeByPositionName(String positionName){
+        try(Connection connection = DriverManager.getConnection(url,login,password);
+            PreparedStatement preparedStatement = connection.prepareStatement(selectContactData)){
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            System.out.println("Result All Employee:");
 
             while(resultSet.next()){
                 String first_name = resultSet.getString("first_name");

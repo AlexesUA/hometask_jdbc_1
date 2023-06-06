@@ -6,8 +6,15 @@ public class Main {
     public static void main(String[] args) {
         MyJoinsDBWorker dbWorker = MyJoinsDBWorker.createDBWorker();
 
-        if(dbWorker!=null) {
-            System.out.println("Great...");
+        assert dbWorker != null;
+        if(dbWorker != null) {
+            dbWorker.showContactData();
+
+            System.out.println("= = = = = = = = = = = = = = = = = ");
+
+            dbWorker.showNoMarriageEmployee();
+
+            System.out.println("= = = = = = = = = = = = = = = = = ");
         }
     }
 
