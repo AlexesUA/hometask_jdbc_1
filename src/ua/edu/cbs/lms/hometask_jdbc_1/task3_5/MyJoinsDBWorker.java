@@ -1,4 +1,6 @@
-package ua.edu.cbs.lms.hometask_jdbc_1.errorshandler;
+package ua.edu.cbs.lms.hometask_jdbc_1.task3_5;
+
+import ua.edu.cbs.lms.hometask_jdbc_1.errorshandler.ErrorsHandler;
 
 import java.sql.*;
 
