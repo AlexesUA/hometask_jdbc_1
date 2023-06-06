@@ -65,7 +65,7 @@ public class MyJoinsDBWorker {
 
     public void showNoMarriageEmployee(){
         try(Connection connection = DriverManager.getConnection(url,login,password);
-            PreparedStatement preparedStatement = connection.prepareStatement(selectContactData)){
+            PreparedStatement preparedStatement = connection.prepareStatement(selectNoMarriageEmployee)){
             ResultSet resultSet = preparedStatement.executeQuery();
 
             System.out.println("Result Employees is No Marriage:");
@@ -88,7 +88,8 @@ public class MyJoinsDBWorker {
 
     public void showEmployeeByPositionName(String positionName){
         try(Connection connection = DriverManager.getConnection(url,login,password);
-            PreparedStatement preparedStatement = connection.prepareStatement(selectContactData)){
+            PreparedStatement preparedStatement = connection.prepareStatement(selectEmployeeByPositionName)){
+            preparedStatement.setString(1,positionName);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             System.out.println("Result All Employee:");
@@ -97,9 +98,9 @@ public class MyJoinsDBWorker {
                 String first_name = resultSet.getString("first_name");
                 String last_name = resultSet.getString("last_name");
                 String phone_number = resultSet.getString("phone_number");
-                String home_address = resultSet.getString("home_address");
+                Date date_of_birthd = resultSet.getDate("date_of_birthd");
 
-                System.out.println(first_name + " " + last_name + "; " + phone_number  + "; " + home_address);
+                System.out.println(first_name + " " + last_name + "; " + phone_number  + "; " + date_of_birthd);
             }
 
 

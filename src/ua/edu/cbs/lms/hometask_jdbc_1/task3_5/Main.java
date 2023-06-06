@@ -15,6 +15,8 @@ public class Main {
             dbWorker.showNoMarriageEmployee();
 
             System.out.println("= = = = = = = = = = = = = = = = = ");
+
+            dbWorker.showEmployeeByPositionName("Manager");
         }
     }
 
