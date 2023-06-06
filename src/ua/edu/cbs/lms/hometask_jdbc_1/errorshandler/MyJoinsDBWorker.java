@@ -92,7 +92,7 @@ public class MyJoinsDBWorker {
             preparedStatement.setString(1,positionName);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            System.out.println("Result All Employee:");
+            System.out.println("Result Employee by " + positionName +":");
 
             while(resultSet.next()){
                 String first_name = resultSet.getString("first_name");
