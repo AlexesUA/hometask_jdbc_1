@@ -17,6 +17,10 @@ public class Main {
             System.out.println("= = = = = = = = = = = = = = = = = ");
 
             dbWorker.showEmployeeByPositionName("Manager");
+
+            System.out.println("= = = = = = = = = = = = = = = = = ");
+
+            dbWorker.showEmployeeByPositionName("Developer");
         }
     }
 

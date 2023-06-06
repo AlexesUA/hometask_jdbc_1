@@ -25,7 +25,7 @@ public class MyJoinsDBWorker {
             "JOIN personal_data ON personal_data.personal_data_id = employees.personal_data_id\n" +
             "JOIN salary ON salary.salary_id = employees.salary_id\n" +
             "JOIN positions ON positions.position_id = salary.salary_id\n" +
-            "WHERE positions.position_name = '?';";
+            "WHERE positions.position_name = ?;";
 
     private MyJoinsDBWorker(){}
 
@@ -89,7 +89,9 @@ public class MyJoinsDBWorker {
     public void showEmployeeByPositionName(String positionName){
         try(Connection connection = DriverManager.getConnection(url,login,password);
             PreparedStatement preparedStatement = connection.prepareStatement(selectEmployeeByPositionName)){
+
             preparedStatement.setString(1,positionName);
+
             ResultSet resultSet = preparedStatement.executeQuery();
 
             System.out.println("Result Employee by " + positionName +":");
