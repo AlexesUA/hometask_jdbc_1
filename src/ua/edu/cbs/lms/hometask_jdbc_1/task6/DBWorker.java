@@ -106,4 +106,21 @@ public class DBWorker {
         }
     }
 
+    public void updateCourse(){
+
+        try(Connection connection = DriverManager.getConnection(urlNewDB,login,password);
+            Statement statement = connection.createStatement()){
+
+            int res = statement.executeUpdate("UPDATE students SET  student_course=student_course+1");
+
+            System.out.println("Updated " + res + " lines");
+
+            res = statement.executeUpdate("DELETE FROM students WHERE student_course > 5;");
+            System.out.println(res + " students finish studies");
+
+        }catch (Exception error){
+            ErrorsHandler.errorHandler(error);
+        }
+    }
+
 }

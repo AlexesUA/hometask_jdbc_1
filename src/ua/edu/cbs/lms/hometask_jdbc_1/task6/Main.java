@@ -16,6 +16,18 @@ public class Main {
                 dbWorker.updateFacultet("Physics", "Quantum Physics");
                 dbWorker.showAllLines();
 
+                System.out.println("= = = = = = = = = = = = = = = = = = ");
+                dbWorker.updateCourse();
+                System.out.println("= = = = = = = = = = = = = = = = = = ");
+                dbWorker.updateCourse();
+                System.out.println("= = = = = = = = = = = = = = = = = = ");
+                dbWorker.updateCourse();
+
+                dbWorker.showAllLines();
+
+
+
+
             }catch (Exception error){
                 ErrorsHandler.errorHandler(error);
             }
